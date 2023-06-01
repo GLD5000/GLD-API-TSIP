@@ -19,10 +19,20 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/views/index.html");
 });
 
+function processDateString(input){
+  if (input.length = 0) return 0;
+
+  const dateRegex = /^\d{4}-\d{1,2},-\d{1,2}$/;
+  const isDateString = dateRegex.test(input);
+  if (isDateString) return input;
+
+  return Number(input);
+}
 // your first API endpoint...
 app.get("/api/:date?", function (req, res) {
-  const stringIn = req.params.date;
+  const stringIn = processDateString(req.params.date);
   const newDate = new Date(stringIn);
+  console.log("new Date(1451001600000):", new Date(1451001600000));
   const isInvalidDate = newDate.toString() === "Invalid Date";
   if (isInvalidDate) return res.json({ error : "Invalid Date" });
   const utc = newDate.toUTCString();
@@ -30,7 +40,6 @@ app.get("/api/:date?", function (req, res) {
 console.log('utc:', utc);
 console.log('unix:', unix);
   // console.log("isDateString:", isDateString);
-  // console.log("new Date(stringIn):", new Date(stringIn));
   // console.log("To UTCstring:", new Date(stringIn).toUTCString());
   // console.log("getTime:", new Date(stringIn).getTime());
   // console.log("Date.parse():", Date.parse(new Date(stringIn)));
