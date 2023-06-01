@@ -1,0 +1,64 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn dev
+
+PATH: 
+  /home/gfunk/.local/bin:/home/gfunk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.17.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/gfunk/Documents/boilerplate-project-timestamp/package.json: Unexpected token } in JSON at position 262
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "fcc-api-projects-boilerplate",
+    "version": "0.0.1",
+    "description": "An FCC Backend Challenge",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js",
+      "dev": "npx kill-port 3000 && nodemon index.js & open http://localhost:3000",
+    },
+    "dependencies": {
+      "cors": "^2.8.0",
+      "dotenv": "^16.1.3",
+      "express": "^4.12.4",
+      "kill-port": "^2.0.1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/freeCodeCamp/boilerplate-project-timestamp.git"
+    },
+    "bugs": {
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp/issues"
+    },
+    "homepage": "https://github.com/freeCodeCamp/boilerplate-project-timestamp#readme",
+    "author": "freeCodeCamp <team@freecodecamp.org>",
+    "keywords": [
+      "node",
+      "express",
+      "freeCodeCamp"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+      "nodemon": "^2.0.22"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
