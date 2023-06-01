@@ -20,19 +20,17 @@ app.get("/", function (req, res) {
 });
 
 function processDateString(input){
-  if (input.length = 0) return 0;
+  if (input.length = 0) return new Date();
+ const parsedDateNumber = new Date(Number(input));
+ const isInvalidDate = parsedDateNumber.toString() === "Invalid Date";
+if (!isInvalidDate) return parsedDateNumber;
 
-  const dateRegex = /^\d{4}-\d{1,2}-\d{1,2}$/;
-  const isDateString = dateRegex.test(input);
-  if (isDateString) return input;
-
-  return Number(input);
+  return new Date(input);
 }
 // your first API endpoint...
 app.get("/api/:date?", function (req, res) {
   const stringIn = processDateString(req.params.date);
-  const newDate = new Date(stringIn);
-  console.log("new Date(1451001600000):", new Date(1451001600000));
+  const newDate = processDateString(stringIn);
   const isInvalidDate = newDate.toString() === "Invalid Date";
   if (isInvalidDate) return res.json({ error : "Invalid Date" });
   const utc = newDate.toUTCString();
