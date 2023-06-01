@@ -29,6 +29,18 @@ if (!isInvalidDate) return parsedDateNumber;
   return new Date(input);
 }
 // your first API endpoint...
+app.get("/api/whoami", function (req, res) {
+  const ipaddress = req.ip;
+  const language = req.headers["accept-language"];
+  const software = req.headers["user-agent"];
+console.log({ipaddress:ipaddress,language:language,
+  software:software});
+   return res.json({ipaddress:ipaddress,language:language,
+    software:software});
+  });
+
+
+
 app.get("/api/:date?", function (req, res) {
   const stringIn = processDateString(req.params.date);
   const newDate = processDateString(stringIn);
@@ -36,8 +48,8 @@ app.get("/api/:date?", function (req, res) {
   if (isInvalidDate) return res.json({ error : "Invalid Date" });
   const utc = newDate.toUTCString();
   const unix = newDate.getTime();
-console.log('utc:', utc);
-console.log('unix:', unix);
+// console.log('utc:', utc);
+// console.log('unix:', unix);
   // console.log("isDateString:", isDateString);
   // console.log("To UTCstring:", new Date(stringIn).toUTCString());
   // console.log("getTime:", new Date(stringIn).getTime());
@@ -50,9 +62,10 @@ console.log('unix:', unix);
   // console.log(
   //   "fudgeddate:",
   //   "Invalid Date" === new Date("fudgeddate").toString()
-  // );
+    // );
   res.json({ unix: unix, utc: utc });
-});
+});  
+
 
 app.get("/", function (req, res) {});
 
