@@ -22,7 +22,7 @@ app.get("/", function (req, res) {
 function processDateString(input){
   if (input.length = 0) return 0;
 
-  const dateRegex = /^\d{4}-\d{1,2},-\d{1,2}$/;
+  const dateRegex = /^\d{4}-\d{1,2}-\d{1,2}$/;
   const isDateString = dateRegex.test(input);
   if (isDateString) return input;
 
