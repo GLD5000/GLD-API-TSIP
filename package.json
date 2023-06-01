@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "open": "npm run start & open http://localhost:3000"
+    "open": "npm run start & open http://localhost:3000",
+    "dev:kill": "npx kill-port 3000 && nodemon index.js & open http://localhost:5000",
+    "dev": "nodemon index.js & open http://localhost:3000"
   },
   "dependencies": {
     "cors": "^2.8.0",
-    "express": "^4.12.4"
+    "express": "^4.12.4",
+    "kill-port": "^2.0.1"
   },
   "repository": {
     "type": "git",
