@@ -15,18 +15,22 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
+  console.log("hello");
   res.sendFile(__dirname + '/views/index.html');
+
 });
 
 
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
+  res.json({unix: 'hello API', utc: 'hello API'});
+});
+
+app.get("/", function (req, res) {
 });
 
 
-
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });

@@ -4,7 +4,8 @@
   "description": "An FCC Backend Challenge",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "open": "npm run start & open http://localhost:3000"
   },
   "dependencies": {
     "express": "^4.12.4",
