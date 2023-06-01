@@ -20,7 +20,8 @@ app.get("/", function (req, res) {
 });
 
 function processDateString(input){
-  if (input.length = 0) return new Date();
+  console.log('input:', input);
+  if (!input ||input.length === 0) return new Date();
  const parsedDateNumber = new Date(Number(input));
  const isInvalidDate = parsedDateNumber.toString() === "Invalid Date";
 if (!isInvalidDate) return parsedDateNumber;
