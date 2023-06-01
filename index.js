@@ -46,21 +46,6 @@ app.get("/api/:date?", function (req, res) {
   if (isInvalidDate) return res.json({ error : "Invalid Date" });
   const utc = newDate.toUTCString();
   const unix = newDate.getTime();
-// console.log('utc:', utc);
-// console.log('unix:', unix);
-  // console.log("isDateString:", isDateString);
-  // console.log("To UTCstring:", new Date(stringIn).toUTCString());
-  // console.log("getTime:", new Date(stringIn).getTime());
-  // console.log("Date.parse():", Date.parse(new Date(stringIn)));
-  // console.log(
-  //   "UTX To UTCstring:",
-  //   new Date(Date.parse(new Date(stringIn))).toUTCString()
-  // );
-  // console.log("fudgeddate:", new Date("fudgeddate"));
-  // console.log(
-  //   "fudgeddate:",
-  //   "Invalid Date" === new Date("fudgeddate").toString()
-    // );
   res.json({ unix: unix, utc: utc });
 });  
 
